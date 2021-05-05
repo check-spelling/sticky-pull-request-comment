@@ -363,7 +363,7 @@ function exportVariable(name, val) {
     process.env[name] = convertedVal;
     const filePath = process.env['GITHUB_ENV'] || '';
     if (filePath) {
-        const delimiter = '_GitHubActionsFileCommandDelimeter_';
+        const delimiter = '_GitHubActionsFileCommandDelimiter_';
         const commandValue = `${name}<<${delimiter}${os.EOL}${convertedVal}${os.EOL}${delimiter}`;
         file_command_1.issueCommand('ENV', commandValue);
     }
@@ -807,7 +807,7 @@ const defaults = {
 };
 exports.GitHub = core_1.Octokit.plugin(plugin_rest_endpoint_methods_1.restEndpointMethods, plugin_paginate_rest_1.paginateRest).defaults(defaults);
 /**
- * Convience function to correctly format Octokit Options to pass into the constructor.
+ * Convenience function to correctly format Octokit Options to pass into the constructor.
  *
  * @param     token    the repo PAT or GITHUB_TOKEN
  * @param     options  other options to set
@@ -2206,7 +2206,7 @@ const VERSION = "2.7.1";
  *
  * Octokit normalizes these responses so that paginated results are always returned following
  * the same structure. One challenge is that if the list response has only one page, no Link
- * header is provided, so this header alone is not sufficient to check wether a response is
+ * header is provided, so this header alone is not sufficient to check whether a response is
  * paginated or not.
  *
  * We check if a "total_count" key is present in the response data, but also make sure that
